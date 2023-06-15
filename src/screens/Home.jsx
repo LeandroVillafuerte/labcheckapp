@@ -1,10 +1,13 @@
 import { SafeAreaView, Text } from "react-native";
 import React from "react";
+import RegisterList from "../components/RegisterList";
 
-export default function Account() {
+const Home = () => {
   return (
     <SafeAreaView>
-      <Text>Account</Text>
+      <RegisterList />
     </SafeAreaView>
   );
-}
+};
+
+export default Home;

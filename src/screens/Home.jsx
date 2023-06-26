@@ -1,11 +1,11 @@
 import { SafeAreaView, Text } from "react-native";
 import React from "react";
-import RegisterList from "../components/RegisterList";
+import RecordList from "../components/RecordList";
 
 const Home = () => {
   return (
     <SafeAreaView>
-      <RegisterList />
+      <RecordList />
     </SafeAreaView>
   );
 };

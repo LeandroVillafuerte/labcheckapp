@@ -7,9 +7,9 @@ import {
 } from "react-native";
 import React from "react";
 import registers from "../utils/mockups/registers.js";
-import ItemRegisterList from "./ItemRegisterList.jsx";
+import ItemRecordList from "./ItemRecordList.jsx";
 
-const RegisterList = () => {
+const RecordList = () => {
   return (
     <>
       <View style={styles.listHeader}>
@@ -22,7 +22,7 @@ const RegisterList = () => {
         // numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ItemRegisterList item={item} />}
+        renderItem={({ item }) => <ItemRecordList item={item} />}
         contentContainerStyle={styles.flatListContentContainer}
         //   onEndReached={isNext && laodMore}
         //   onEndReachedThreshold={0.1}
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterList;
+export default RecordList;

@@ -1,7 +1,7 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import React from "react";
 
-const ItemRegisterList = ({ item }) => {
+const ItemRecordList = ({ item }) => {
   return (
     <TouchableWithoutFeedback
       style={styles.container}
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   nameText: { fontSize: 20 },
 });
 
-export default ItemRegisterList;
+export default ItemRecordList;

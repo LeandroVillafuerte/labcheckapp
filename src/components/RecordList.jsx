@@ -42,8 +42,8 @@ const RecordList = () => {
 
 const styles = StyleSheet.create({
   flatListContentContainer: {
-    bottom: 30,
     top: 20,
+    paddingBottom: 70,
   },
   listHeader: {
     flexDirection: "row",

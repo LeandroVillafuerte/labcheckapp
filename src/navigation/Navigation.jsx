@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigation from "./HomeNavigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -10,9 +10,12 @@ const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   const { auth } = useAuth();
+
+  if (!auth) return null;
+
   return (
     <>
-      {auth ? (
+      {auth !== "notlogged" ? (
         <Tab.Navigator>
           <Tab.Screen
             name="Registros"

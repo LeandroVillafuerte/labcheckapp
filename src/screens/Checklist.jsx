@@ -1,15 +1,11 @@
-import { View, Switch, StyleSheet } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useState, useCallback } from "react";
+import { View, Button, StyleSheet, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import RadioButton from "../components/RadioButton";
-import ChecklistItem from "../components/ChecklistItem";
-import { useFormik } from "formik";
+import { Formik, Field, FieldArray } from "formik";
 
 const Checklist = (props) => {
-  const formik = useFormik({
-    initialValues: initialValues(),
-    onSubmit: (formValue) => {},
-  });
+  const [form, setForm] = useState(formItems);
   useFocusEffect(
     useCallback(() => {
       props.navigation.getParent().setOptions({ headerShown: false });
@@ -18,29 +14,67 @@ const Checklist = (props) => {
       };
     }, [])
   );
+
+  const handlePress = (indexItem, indexOption) => {
+    setForm((prevForm) =>
+      prevForm.map((item, index) => {
+        if (indexItem === index) {
+          return {
+            ...item,
+            options: item.options.map((option, optionIndex) => ({
+              ...option,
+              selected: optionIndex === indexOption,
+            })),
+          };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
+
+  const handleSubmit = () => {
+    console.log(form);
+  };
+
   return (
     <View>
-      <ChecklistItem value={formik.values[0]} />
+      {form.map((formItem, indexItem) => (
+        <View key={"formItem" + formItem.id}>
+          <Text>{formItem.text}</Text>
+          {formItem.options.map((option, indexOption) => (
+            <View key={option.text + indexItem + indexOption}>
+              <Text>{option.text}</Text>
+              <RadioButton
+                handlePress={() => handlePress(indexItem, indexOption)}
+                selected={option.selected}
+              />
+            </View>
+          ))}
+        </View>
+      ))}
+      <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
 };
 
-const initialValues = () => [
+const formItems = [
   {
+    id: 1,
     text: "Prueba",
     options: [
       { text: "uno", selected: false },
       { text: "dos", selected: true },
     ],
   },
-];
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  {
+    id: 2,
+    text: "Prueba2",
+    options: [
+      { text: "uno", selected: false },
+      { text: "dos", selected: true },
+    ],
   },
-});
+];
 
 export default Checklist;

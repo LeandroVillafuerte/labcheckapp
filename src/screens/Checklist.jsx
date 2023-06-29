@@ -1,18 +1,13 @@
 import React, { useState, useCallback } from "react";
 import { ScrollView, View, Button, StyleSheet, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
-import { Divider, RadioButton } from "react-native-paper";
+import { RadioButton } from "react-native-paper";
 import { formItems } from "../utils/mockups/form.js";
-const Checklist = (props) => {
+import useWithoutHeader from "../hooks/useWithoutHeader.js";
+
+const Checklist = () => {
   const [form, setForm] = useState(formItems);
-  useFocusEffect(
-    useCallback(() => {
-      props.navigation.getParent().setOptions({ headerShown: false });
-      return () => {
-        props.navigation.getParent().setOptions({ headerShown: true });
-      };
-    }, [])
-  );
+  useWithoutHeader();
 
   const handlePress = (indexItem, indexOption) => {
     setForm((prevForm) =>
@@ -46,13 +41,19 @@ const Checklist = (props) => {
               {formItem.options.map((option, indexOption) => (
                 <View
                   key={option.text + indexItem + indexOption}
-                  style={styles.option}
+                  style={[
+                    styles.option,
+                    indexOption < formItem.options.length - 1 &&
+                      styles.optionDivider,
+                  ]}
                 >
-                  <Text style={{ fontSize: 13 }}>{option.text}</Text>
-                  <RadioButton
-                    onPress={() => handlePress(indexItem, indexOption)}
-                    status={option.selected ? "checked" : "unchecked"}
-                  />
+                  <Text style={styles.textOption}>{option.text}</Text>
+                  <View style={styles.btnOptionContainer}>
+                    <RadioButton
+                      onPress={() => handlePress(indexItem, indexOption)}
+                      status={option.selected ? "checked" : "unchecked"}
+                    />
+                  </View>
                 </View>
               ))}
             </View>
@@ -88,6 +89,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  optionDivider: {
+    borderBottomWidth: 0.7,
+    borderBottomColor: "rgb(176, 196, 222)",
+  },
+  textOption: {
+    fontSize: 13,
+    flexBasis: 90,
+  },
+  btnOptionContainer: {},
   btnSubmitContainer: {
     paddingVertical: 20,
   },

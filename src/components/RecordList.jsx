@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import registers from "../utils/mockups/registers.js";
+import records from "../utils/mockups/records.js";
 import ItemRecordList from "./ItemRecordList.jsx";
 
 const RecordList = () => {
@@ -18,7 +18,7 @@ const RecordList = () => {
         <Text style={styles.textHeaderName}>Nombre</Text>
       </View>
       <FlatList
-        data={registers}
+        data={records}
         // numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}

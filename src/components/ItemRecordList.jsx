@@ -1,11 +1,13 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
 const ItemRecordList = ({ item }) => {
+  const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback
       style={styles.container}
-      onPress={() => console.log(`%c${"hola" + item.id}`, "color:red")}
+      onPress={() => navigation.navigate("Record Card", { id: item.id })}
     >
       <View style={styles.card}>
         <View style={styles.id}>

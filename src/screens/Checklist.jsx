@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from "react";
-import { View, Button, StyleSheet, Text } from "react-native";
+import { ScrollView, View, Button, StyleSheet, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
-import RadioButton from "../components/RadioButton";
-import { Formik, Field, FieldArray } from "formik";
-
+import { Divider, RadioButton } from "react-native-paper";
+import { formItems } from "../utils/mockups/form.js";
 const Checklist = (props) => {
   const [form, setForm] = useState(formItems);
   useFocusEffect(
@@ -36,45 +35,62 @@ const Checklist = (props) => {
   const handleSubmit = () => {
     console.log(form);
   };
-
   return (
-    <View>
-      {form.map((formItem, indexItem) => (
-        <View key={"formItem" + formItem.id}>
-          <Text>{formItem.text}</Text>
-          {formItem.options.map((option, indexOption) => (
-            <View key={option.text + indexItem + indexOption}>
-              <Text>{option.text}</Text>
-              <RadioButton
-                handlePress={() => handlePress(indexItem, indexOption)}
-                selected={option.selected}
-              />
+    <ScrollView>
+      <View style={styles.formContainer}>
+        {form.map((formItem, indexItem) => (
+          <View key={"formItem" + formItem.id}>
+            <View style={styles.itemsContainer}>
+              <Text style={styles.textItem}>{formItem.text}</Text>
+
+              {formItem.options.map((option, indexOption) => (
+                <View
+                  key={option.text + indexItem + indexOption}
+                  style={styles.option}
+                >
+                  <Text style={{ fontSize: 13 }}>{option.text}</Text>
+                  <RadioButton
+                    onPress={() => handlePress(indexItem, indexOption)}
+                    status={option.selected ? "checked" : "unchecked"}
+                  />
+                </View>
+              ))}
             </View>
-          ))}
+          </View>
+        ))}
+        <View style={styles.btnSubmitContainer}>
+          <Button title="Submit" onPress={handleSubmit} />
         </View>
-      ))}
-      <Button title="Submit" onPress={handleSubmit} />
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
-const formItems = [
-  {
-    id: 1,
-    text: "Prueba",
-    options: [
-      { text: "uno", selected: false },
-      { text: "dos", selected: true },
-    ],
+const styles = StyleSheet.create({
+  formContainer: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    paddingBottom: 20,
   },
-  {
-    id: 2,
-    text: "Prueba2",
-    options: [
-      { text: "uno", selected: false },
-      { text: "dos", selected: true },
-    ],
+  itemsContainer: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    backgroundColor: "rgba(205, 219, 250, 0.789)",
+    borderRadius: 12,
   },
-];
+  textItem: {
+    fontWeight: "bold",
+    fontSize: 15,
+  },
+  option: {
+    paddingLeft: 10,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  btnSubmitContainer: {
+    paddingVertical: 20,
+  },
+});
 
 export default Checklist;

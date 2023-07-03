@@ -14,7 +14,8 @@ export default {
     },
     {
       checked: "Coincide",
-      comment: "",
+      comment:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A provident tenetur modi reprehenderit tempora voluptatibus dolore adipisci ducimus corporis ipsam?",
       id: 3,
       title: "Puertas Cerradas (4)",
     },

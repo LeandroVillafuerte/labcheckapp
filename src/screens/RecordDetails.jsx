@@ -1,8 +1,9 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useCallback } from "react";
-import { Avatar, Button, Card, Text } from "react-native-paper";
+import { Avatar, Button, Card, Divider, Text } from "react-native-paper";
 import useWithoutHeader from "../hooks/useWithoutHeader";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import record from "../utils/mockups/record";
 
 const RecordDetails = (props) => {
   const {
@@ -11,36 +12,51 @@ const RecordDetails = (props) => {
       params: { id },
     },
   } = props;
-
+  console.log(navigation);
+  navigation.setOptions({ title: `Registro #${record.id}` });
   useWithoutHeader();
   return (
     <ScrollView>
       <Card>
-        <Card.Content style={{ padding: 5 }}>
-          <Text variant="headlineSmall">Registro #{id}</Text>
-        </Card.Content>
         <Card.Content style={styles.head}>
           <View style={styles.name}>
             <Text variant="titleLarge">Usuario: Bruce Wayne</Text>
           </View>
           <View style={styles.time}>
+            <Text variant="bodySmall">Registro #{record.id}</Text>
             <Icon name="clock">07:40hs, 11 May, 2023</Icon>
           </View>
         </Card.Content>
         <Card.Content style={styles.list}>
-          <ScrollView style={styles.items}>
-            <View style={styles.listItemTitle}>
-              <Icon name="pen" size={15} />
-              <View style={{ paddingLeft: 10 }}>
-                <Text variant="bodyLarge">EQUISDE</Text>
-              </View>
+          <View style={styles.items}>
+            <Divider />
+            <View style={{ padding: 5 }}>
+              <Text variant="bodyLarge">Respuestas:</Text>
             </View>
-            <View>
-              <View>
-                <Text variant="bodyMedium">EQUISDE</Text>
-              </View>
-            </View>
-          </ScrollView>
+            {record.form.map((item) => (
+              <>
+                <View style={styles.listItemTitle}>
+                  <Icon name="pen" size={15} />
+                  <View style={{ paddingLeft: 10 }}>
+                    <Text variant="bodyLarge">
+                      {item.title}:{" "}
+                      <Text style={{ fontWeight: "bold" }}>{item.checked}</Text>
+                      .
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.comment}>
+                  <Text variant="bodyLarge">Comentario:</Text>
+                  {(item.comment && (
+                    <Text style={{ fontWeight: "bold" }}>
+                      "{item.comment}".
+                    </Text>
+                  )) || <Text style={{ fontWeight: "bold" }}>-</Text>}
+                </View>
+              </>
+            ))}
+            <Divider />
+          </View>
         </Card.Content>
       </Card>
     </ScrollView>
@@ -56,5 +72,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  comment: { paddingHorizontal: 25 },
 });
 export default RecordDetails;

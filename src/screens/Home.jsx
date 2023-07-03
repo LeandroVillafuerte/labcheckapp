@@ -1,4 +1,5 @@
-import { View, Button, SafeAreaView, StyleSheet } from "react-native";
+import { View, SafeAreaView, StyleSheet } from "react-native";
+import { IconButton } from "react-native-paper";
 import React from "react";
 import RecordList from "../components/RecordList";
 import { useNavigation } from "@react-navigation/native";
@@ -8,7 +9,14 @@ const Home = () => {
   return (
     <SafeAreaView>
       <View style={styles.buttonContainer}>
-        <Button title="+" onPress={() => navigation.navigate("New Record")} />
+        <IconButton
+          icon="plus"
+          mode="contained"
+          size={40}
+          iconColor="#ffead6"
+          containerColor="#232392"
+          onPress={() => navigation.navigate("New Record")}
+        />
       </View>
       <RecordList />
     </SafeAreaView>

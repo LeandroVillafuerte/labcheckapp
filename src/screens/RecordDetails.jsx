@@ -34,7 +34,7 @@ const RecordDetails = (props) => {
               <Text variant="bodyLarge">Respuestas:</Text>
             </View>
             {record.form.map((item) => (
-              <>
+              <View key={"item" + item.id}>
                 <View style={styles.listItemTitle}>
                   <Icon name="pen" size={15} />
                   <View style={{ paddingLeft: 10 }}>
@@ -53,7 +53,7 @@ const RecordDetails = (props) => {
                     </Text>
                   )) || <Text style={{ fontWeight: "bold" }}>-</Text>}
                 </View>
-              </>
+              </View>
             ))}
             <Divider />
           </View>

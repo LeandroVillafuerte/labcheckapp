@@ -1,14 +1,14 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { ScrollView, View, Button, StyleSheet, Text } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
 import { RadioButton } from "react-native-paper";
 import { formItems } from "../utils/mockups/form.js";
 import useWithoutHeader from "../hooks/useWithoutHeader.js";
+import useAuth from "../hooks/useAuth.js";
 
 const Checklist = () => {
+  const { auth } = useAuth();
   const [form, setForm] = useState(formItems);
   useWithoutHeader();
-
   const handlePress = (indexItem, indexOption) => {
     setForm((prevForm) =>
       prevForm.map((item, index) => {
@@ -28,7 +28,18 @@ const Checklist = () => {
   };
 
   const handleSubmit = () => {
-    console.log(form);
+    const userCheck = form.map((item) => {
+      const optionSelectedText = item.options.filter(
+        (val) => val.selected === true
+      )[0].text;
+      return {
+        id: item.id,
+        title: item.text,
+        checked: optionSelectedText,
+        comment: item.comment || "",
+      };
+    });
+    console.log({ user: auth.mail, form: userCheck });
   };
   return (
     <ScrollView>

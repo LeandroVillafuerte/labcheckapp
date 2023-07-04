@@ -12,12 +12,11 @@ const RecordDetails = (props) => {
       params: { id },
     },
   } = props;
-  console.log(navigation);
   navigation.setOptions({ title: `Registro #${record.id}` });
   useWithoutHeader();
   return (
     <ScrollView>
-      <Card>
+      <Card style={styles.card} elevation={3}>
         <Card.Content style={styles.head}>
           <View style={styles.name}>
             <Text variant="titleLarge">Usuario: Bruce Wayne</Text>
@@ -64,6 +63,7 @@ const RecordDetails = (props) => {
 };
 
 const styles = StyleSheet.create({
+  card: { margin: 20, backgroundColor: "#aec3b0" },
   time: { paddingVertical: 5 },
   items: { paddingVertical: 20 },
   head: { padding: 5, display: "flex", alignItems: "flex-end" },

@@ -41,7 +41,7 @@ export function AuthProvider(props) {
     } catch (error) {
       throw error;
     }
-    setAuth(undefined);
+    setAuth("notlogged");
   };
 
   const valueContext = {

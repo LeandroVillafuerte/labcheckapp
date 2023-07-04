@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
+import { Card, Button, TextInput } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { user, userDetails } from "../utils/mockups/user";
@@ -7,6 +8,7 @@ import useAuth from "../hooks/useAuth";
 
 export default function Login() {
   const [error, setError] = useState("");
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
   const { login } = useAuth();
 
   const formik = useFormik({
@@ -26,30 +28,50 @@ export default function Login() {
   });
 
   return (
-    <View>
-      <Text style={styles.title}>Iniciar sesión</Text>
-      <TextInput
-        placeholder="Nombre de usuario"
-        style={styles.input}
-        autoCapitalize="none"
-        value={formik.values.username}
-        onChangeText={(text) => formik.setFieldValue("username", text)}
-      />
-      <TextInput
-        placeholder="Contraseña"
-        style={styles.input}
-        autoCapitalize="none"
-        secureTextEntry={true}
-        value={formik.values.password}
-        onChangeText={(text) => formik.setFieldValue("password", text)}
-      />
-      <Button title="Entrar" onPress={formik.handleSubmit} />
+    <>
+      <View>
+        <Text style={styles.title}>Iniciar sesión</Text>
+      </View>
+      <Card elevation={4} style={styles.card}>
+        <View>
+          <TextInput
+            label="Email"
+            mode="outlined"
+            style={styles.input}
+            autoCapitalize="none"
+            value={formik.values.username}
+            onChangeText={(text) => formik.setFieldValue("username", text)}
+          />
+          <TextInput
+            label="Contraseña"
+            secureTextEntry={secureTextEntry}
+            right={
+              <TextInput.Icon
+                onPressIn={() => setSecureTextEntry(false)}
+                onPressOut={() => setSecureTextEntry(true)}
+                icon="eye"
+              />
+            }
+            mode="outlined"
+            style={styles.input}
+            autoCapitalize="none"
+            value={formik.values.password}
+            onChangeText={(text) => formik.setFieldValue("password", text)}
+          />
+        </View>
+        <View>
+          <Text style={styles.error}>{formik.errors.username}</Text>
+          <Text style={styles.error}>{formik.errors.password}</Text>
 
-      <Text style={styles.error}>{formik.errors.username}</Text>
-      <Text style={styles.error}>{formik.errors.password}</Text>
-
-      <Text style={styles.error}>{error}</Text>
-    </View>
+          <Text style={styles.error}>{error}</Text>
+        </View>
+        <View style={styles.btn}>
+          <Button icon="power" mode="contained" onPress={formik.handleSubmit}>
+            Entrar
+          </Button>
+        </View>
+      </Card>
+    </>
   );
 }
 
@@ -68,23 +90,28 @@ function validationSchema() {
 }
 
 const styles = StyleSheet.create({
+  card: {
+    margin: 20,
+    padding: 15,
+    paddingTop: 60,
+    backgroundColor: "#809bce",
+  },
   title: {
     textAlign: "center",
     fontSize: 28,
     fontWeight: "bold",
     marginTop: 50,
-    marginBottom: 15,
+    marginBottom: 45,
   },
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
+    width: 350,
+    marginVertical: 10,
+    alignSelf: "center",
+    backgroundColor: "#95b8d1",
   },
   error: {
     textAlign: "center",
     color: "#f00",
-    marginTop: 20,
   },
+  btn: { paddingVertical: 15, width: 150, alignSelf: "center" },
 });

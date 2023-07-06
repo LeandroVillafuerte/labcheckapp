@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { Card, Button, TextInput } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -29,22 +29,26 @@ export default function Login() {
   });
 
   return (
-    <>
+    <View style={styles.container}>
       <View>
         <Text style={styles.title}>Iniciar sesión</Text>
       </View>
       <View>
         <TextInput
           label="Email"
+          placeholder="Email..."
           mode="outlined"
           style={styles.input}
+          textColor={colors.font_light_1_color}
           autoCapitalize="none"
           value={formik.values.username}
           onChangeText={(text) => formik.setFieldValue("username", text)}
         />
         <TextInput
           label="Contraseña"
+          placeholder="Contraseña..."
           secureTextEntry={secureTextEntry}
+          textColor={colors.font_light_1_color}
           right={
             <TextInput.Icon
               onPressIn={() => setSecureTextEntry(false)}
@@ -59,18 +63,28 @@ export default function Login() {
           onChangeText={(text) => formik.setFieldValue("password", text)}
         />
       </View>
-      <View>
-        <Text style={styles.error}>{formik.errors.username}</Text>
-        <Text style={styles.error}>{formik.errors.password}</Text>
+      {(formik.errors.username || formik.errors.password || error) && (
+        <View style={styles.errorContainer}>
+          <Text style={styles.error}>{formik.errors.username}</Text>
+          <Text style={styles.error}>{formik.errors.password}</Text>
 
-        <Text style={styles.error}>{error}</Text>
-      </View>
-      <View style={styles.btn}>
+          <Text style={styles.error}>{error}</Text>
+        </View>
+      )}
+      <View
+        style={[
+          styles.btn,
+          !(formik.errors.username || formik.errors.password || error) && {
+            marginTop: 60,
+          },
+        ]}
+      >
         <Button icon="power" mode="contained" onPress={formik.handleSubmit}>
           Entrar
         </Button>
       </View>
-    </>
+      <Text style={[styles.name]}>Check App</Text>
+    </View>
   );
 }
 
@@ -89,28 +103,37 @@ function validationSchema() {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    margin: 20,
-    padding: 15,
-    paddingTop: 60,
-    backgroundColor: "#809bce",
+  container: {
+    flex: 1,
+    backgroundColor: colors.bg_2_color,
   },
   title: {
     textAlign: "center",
     fontSize: 28,
     fontWeight: "bold",
-    marginTop: 50,
-    marginBottom: 45,
+    marginTop: 70,
+    marginBottom: 30,
+    color: colors.font_light_1_color,
   },
   input: {
-    width: 350,
+    width: 300,
     marginVertical: 10,
     alignSelf: "center",
-    backgroundColor: "#95b8d1",
+    backgroundColor: colors.bg_2_color,
+    color: "red",
+  },
+  errorContainer: {
+    height: 60,
   },
   error: {
     textAlign: "center",
     color: "#f00",
   },
-  btn: { paddingVertical: 15, width: 150, alignSelf: "center" },
+  btn: { paddingVertical: 15, width: 300, alignSelf: "center" },
+  name: {
+    color: colors.light_3_color,
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 20,
+  },
 });

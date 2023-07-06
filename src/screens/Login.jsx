@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { user, userDetails } from "../utils/mockups/user";
 import useAuth from "../hooks/useAuth";
+import colors from "../utils/constants/colors";
 
 export default function Login() {
   const [error, setError] = useState("");
@@ -32,45 +33,43 @@ export default function Login() {
       <View>
         <Text style={styles.title}>Iniciar sesión</Text>
       </View>
-      <Card elevation={4} style={styles.card}>
-        <View>
-          <TextInput
-            label="Email"
-            mode="outlined"
-            style={styles.input}
-            autoCapitalize="none"
-            value={formik.values.username}
-            onChangeText={(text) => formik.setFieldValue("username", text)}
-          />
-          <TextInput
-            label="Contraseña"
-            secureTextEntry={secureTextEntry}
-            right={
-              <TextInput.Icon
-                onPressIn={() => setSecureTextEntry(false)}
-                onPressOut={() => setSecureTextEntry(true)}
-                icon="eye"
-              />
-            }
-            mode="outlined"
-            style={styles.input}
-            autoCapitalize="none"
-            value={formik.values.password}
-            onChangeText={(text) => formik.setFieldValue("password", text)}
-          />
-        </View>
-        <View>
-          <Text style={styles.error}>{formik.errors.username}</Text>
-          <Text style={styles.error}>{formik.errors.password}</Text>
+      <View>
+        <TextInput
+          label="Email"
+          mode="outlined"
+          style={styles.input}
+          autoCapitalize="none"
+          value={formik.values.username}
+          onChangeText={(text) => formik.setFieldValue("username", text)}
+        />
+        <TextInput
+          label="Contraseña"
+          secureTextEntry={secureTextEntry}
+          right={
+            <TextInput.Icon
+              onPressIn={() => setSecureTextEntry(false)}
+              onPressOut={() => setSecureTextEntry(true)}
+              icon="eye"
+            />
+          }
+          mode="outlined"
+          style={styles.input}
+          autoCapitalize="none"
+          value={formik.values.password}
+          onChangeText={(text) => formik.setFieldValue("password", text)}
+        />
+      </View>
+      <View>
+        <Text style={styles.error}>{formik.errors.username}</Text>
+        <Text style={styles.error}>{formik.errors.password}</Text>
 
-          <Text style={styles.error}>{error}</Text>
-        </View>
-        <View style={styles.btn}>
-          <Button icon="power" mode="contained" onPress={formik.handleSubmit}>
-            Entrar
-          </Button>
-        </View>
-      </Card>
+        <Text style={styles.error}>{error}</Text>
+      </View>
+      <View style={styles.btn}>
+        <Button icon="power" mode="contained" onPress={formik.handleSubmit}>
+          Entrar
+        </Button>
+      </View>
     </>
   );
 }

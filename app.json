@@ -4,10 +4,10 @@
     "slug": "check-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon_1.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_1.png",
       "resizeMode": "contain",
       "backgroundColor": "#303030"
     },
@@ -20,12 +20,12 @@
     "android": {
       "package": "Leandro.Villafuerte.LabCheck",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/adaptive-icon_1.png",
+        "backgroundColor": "#303030"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon_1.png"
     },
     "extra": {
       "eas": {

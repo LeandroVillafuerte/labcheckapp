@@ -1,6 +1,6 @@
 import React, { useState, createContext, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ACCOUNT_STORAGE } from "../utils/constants";
+import { ACCOUNT_STORAGE } from "../utils/constants/constants.js";
 import { useFocusEffect } from "@react-navigation/native";
 
 export const AuthContext = createContext({

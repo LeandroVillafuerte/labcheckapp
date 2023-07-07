@@ -1,6 +1,7 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import colors from "../utils/constants/colors";
 
 const ItemRecordList = ({ item }) => {
   const navigation = useNavigation();
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: "#3f70d499",
+    backgroundColor: colors.medium_2_color,
     borderRadius: 10,
   },
   id: { flex: 1 },

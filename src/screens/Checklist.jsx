@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { ScrollView, View, Button, StyleSheet, Text } from "react-native";
-import { RadioButton } from "react-native-paper";
+import { ScrollView, View, StyleSheet } from "react-native";
+import { RadioButton, Text, Button } from "react-native-paper";
 import { formItems } from "../utils/mockups/form.js";
 import useWithoutHeader from "../hooks/useWithoutHeader.js";
 import useAuth from "../hooks/useAuth.js";
+import colors from "../utils/constants/colors.js";
 
 const Checklist = () => {
   const { auth } = useAuth();
@@ -71,7 +72,9 @@ const Checklist = () => {
           </View>
         ))}
         <View style={styles.btnSubmitContainer}>
-          <Button title="Submit" onPress={handleSubmit} />
+          <Button mode="contained" onPress={handleSubmit}>
+            Enviar
+          </Button>
         </View>
       </View>
     </ScrollView>
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10,
     marginBottom: 10,
-    backgroundColor: "rgba(205, 219, 250, 0.789)",
+    backgroundColor: colors.bg_3_color,
     borderRadius: 12,
   },
   textItem: {
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
   },
   optionDivider: {
     borderBottomWidth: 0.7,
-    borderBottomColor: "rgb(176, 196, 222)",
+    // borderBottomColor: "rgb(176, 196, 222)",
   },
   textOption: {
     fontSize: 13,

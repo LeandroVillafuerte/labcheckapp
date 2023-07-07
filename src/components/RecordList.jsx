@@ -8,6 +8,7 @@ import {
 import React from "react";
 import records from "../utils/mockups/records.js";
 import ItemRecordList from "./ItemRecordList.jsx";
+import colors from "../utils/constants/colors.js";
 
 const RecordList = () => {
   return (
@@ -47,10 +48,11 @@ const styles = StyleSheet.create({
   },
   listHeader: {
     flexDirection: "row",
-    backgroundColor: "#AEAEAE",
+    backgroundColor: colors.medium_2_color,
     paddingHorizontal: 30,
     height: 30,
     alignItems: "center",
+    borderBottomWidth: 1,
   },
   textHeaderId: {
     flex: 1,

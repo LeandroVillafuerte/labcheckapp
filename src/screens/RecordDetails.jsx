@@ -4,6 +4,7 @@ import { Avatar, Button, Card, Divider, Text } from "react-native-paper";
 import useWithoutHeader from "../hooks/useWithoutHeader";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import record from "../utils/mockups/record";
+import colors from "../utils/constants/colors";
 
 const RecordDetails = (props) => {
   const {
@@ -23,7 +24,9 @@ const RecordDetails = (props) => {
           </View>
           <View style={styles.time}>
             <Text variant="bodySmall">Registro #{record.id}</Text>
-            <Icon name="clock">07:40hs, 11 May, 2023</Icon>
+            <Icon color={colors.light_1_color} name="clock">
+              <Text variant="bodySmall">07:40hs, 11 May, 2023 </Text>
+            </Icon>
           </View>
         </Card.Content>
         <Card.Content style={styles.list}>
@@ -35,7 +38,7 @@ const RecordDetails = (props) => {
             {record.form.map((item) => (
               <View key={"item" + item.id}>
                 <View style={styles.listItemTitle}>
-                  <Icon name="pen" size={15} />
+                  <Icon name="pen" color={colors.light_1_color} size={15} />
                   <View style={{ paddingLeft: 10 }}>
                     <Text variant="bodyLarge">
                       {item.title}:{" "}
@@ -63,7 +66,7 @@ const RecordDetails = (props) => {
 };
 
 const styles = StyleSheet.create({
-  card: { margin: 20, backgroundColor: "#aec3b0" },
+  card: { margin: 20 },
   time: { paddingVertical: 5 },
   items: { paddingVertical: 20 },
   head: { padding: 5, display: "flex", alignItems: "flex-end" },

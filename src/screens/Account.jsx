@@ -32,11 +32,10 @@ const styles = StyleSheet.create({
   card: {
     margin: 20,
     padding: 15,
-    backgroundColor: "#aec3b0",
     height: 350,
   },
   avatarImg: { alignSelf: "center" },
   title: { padding: 10, alignSelf: "center" },
-  btn: { top: 30, width: 150, alignSelf: "center" },
+  btn: { top: 30, width: 300, alignSelf: "center" },
   body: { padding: 10 },
 });

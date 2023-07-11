@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import AccountNavigation from "./AccountNavigation";
 import useAuth from "../hooks/useAuth";
 import Login from "../screens/Login";
+import menuButton from "../components/menuButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,7 @@ export default function Navigation() {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="clipboard-list" color={color} size={size} />
               ),
+              headerRight: menuButton,
             }}
           />
           <Tab.Screen

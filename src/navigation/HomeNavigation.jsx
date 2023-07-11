@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/Home";
 import Checklist from "../screens/Checklist";
 import RecordDetails from "../screens/RecordDetails";
+import RecordEditor from "../screens/RecordEditor";
+import UsersAdmin from "../screens/UsersAdmin";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +25,16 @@ export default function HomeNavigation() {
         name="Record Card"
         component={RecordDetails}
         options={{ title: "Registro" }}
+      />
+      <Stack.Screen
+        name="Users"
+        component={UsersAdmin}
+        options={{ title: "Gestionar usuarios" }}
+      />
+      <Stack.Screen
+        name="Record sheet editor"
+        component={RecordEditor}
+        options={{ title: "Editar hoja de registro" }}
       />
     </Stack.Navigator>
   );

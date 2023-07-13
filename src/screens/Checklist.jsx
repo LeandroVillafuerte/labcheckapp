@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
-import { RadioButton, Text, Button } from "react-native-paper";
+import { RadioButton, Text, Button, TextInput } from "react-native-paper";
 import { formItems } from "../utils/mockups/form.js";
 import useWithoutHeader from "../hooks/useWithoutHeader.js";
 import useAuth from "../hooks/useAuth.js";
@@ -33,6 +33,7 @@ const Checklist = () => {
       const optionSelectedText = item.options.filter(
         (val) => val.selected === true
       )[0].text;
+      console.log(item);
       return {
         id: item.id,
         title: item.text,
@@ -41,6 +42,36 @@ const Checklist = () => {
       };
     });
     console.log({ user: auth.mail, form: userCheck });
+  };
+  const toggleShowComment = (indexItem, clean = false) => {
+    setForm((prevForm) =>
+      prevForm.map((item, index) => {
+        if (indexItem === index) {
+          return {
+            ...item,
+            showComment: !item.showComment,
+            comment: clean ? "" : item.comment,
+          };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
+  const changeText = (indexItem, text) => {
+    console.log(text);
+    setForm((prevForm) =>
+      prevForm.map((item, index) => {
+        if (indexItem === index) {
+          return {
+            ...item,
+            comment: text,
+          };
+        } else {
+          return item;
+        }
+      })
+    );
   };
   return (
     <ScrollView>
@@ -68,6 +99,33 @@ const Checklist = () => {
                   </View>
                 </View>
               ))}
+              {formItem.showComment ? (
+                <>
+                  <Button
+                    icon="minus"
+                    mode="text"
+                    textColor="red"
+                    onPress={() => toggleShowComment(indexItem, true)}
+                  >
+                    Eliminar comentario
+                  </Button>
+                  <TextInput
+                    placeholder="Comentario..."
+                    value={formItem.comment}
+                    onChangeText={(text) => changeText(indexItem, text)}
+                    mode="outlined"
+                    multiline
+                  />
+                </>
+              ) : (
+                <Button
+                  icon="plus"
+                  mode="text"
+                  onPress={() => toggleShowComment(indexItem)}
+                >
+                  Agregar comentario
+                </Button>
+              )}
             </View>
           </View>
         ))}

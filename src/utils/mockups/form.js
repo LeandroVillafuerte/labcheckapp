@@ -7,6 +7,7 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
   {
     id: 6,
@@ -52,5 +57,6 @@ export const formItems = [
       { text: "No Coincide", selected: false },
       { text: "No se revisa", selected: true },
     ],
+    comment: "",
   },
 ];

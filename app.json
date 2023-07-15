@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "Check App",
-    "slug": "check-app",
-    "version": "1.0.0",
+    "slug": "app-lab-calendario",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon_1.png",
     "userInterfaceStyle": "automatic",

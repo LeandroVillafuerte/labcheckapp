@@ -8,30 +8,31 @@ import colors from "../utils/constants/colors";
 const RecordEditor = () => {
   useWithoutHeader();
   const [form, setForm] = useState(formItems);
-  const Item = ({ item }) => {
-    const [isEditing, setEditing] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+
+  const Item = ({ item, selectedId, setSelectedId }) => {
     const [textItem, setTextItem] = useState(item.text);
-    const handleEditText = () => {
-      setEditing(!isEditing);
+    const handleEditText = (id) => {
+      selectedId ? setSelectedId(null) : setSelectedId(id);
     };
     const handleDelete = () => {
       setForm(form.filter((val) => val.id !== item.id));
     };
-    const handleSetText = () => {
+    const handleSetText = (id) => {
       setForm(
         form.map((val) => {
-          if (item.id === val.id) {
+          if (id === val.id) {
             return { ...val, text: textItem };
           } else {
             return val;
           }
         })
       );
-      handleEditText();
+      handleEditText(id);
     };
     return (
       <View style={styles.itemsContainer}>
-        {isEditing ? (
+        {selectedId === item.id ? (
           <TextInput
             value={textItem}
             onChangeText={(text) => setTextItem(text)}
@@ -39,29 +40,29 @@ const RecordEditor = () => {
             multiline
           />
         ) : (
-          <Text style={[styles.textItem, { flex: 8 }]} onPress={handleEditText}>
-            {item.text}
-          </Text>
+          <Text style={[styles.textItem, { flex: 8 }]}>{item.text}</Text>
         )}
-        {!isEditing && (
+        {!(selectedId === item.id) && (
           <IconButton
             style={{ flex: 1 }}
             icon={"pencil"}
-            onPress={handleEditText}
+            onPress={() => handleEditText(item.id)}
+            disabled={selectedId && selectedId !== item.id}
           />
         )}
-        {!isEditing && (
+        {!(selectedId === item.id) && (
           <IconButton
             style={{ flex: 1 }}
             icon={"delete"}
             onPress={handleDelete}
+            disabled={selectedId && selectedId !== item.id}
           />
         )}
-        {isEditing && (
+        {selectedId === item.id && (
           <IconButton
             style={{ flex: 2 }}
             icon={"check"}
-            onPress={handleSetText}
+            onPress={() => handleSetText(item.id)}
           />
         )}
       </View>
@@ -70,7 +71,14 @@ const RecordEditor = () => {
 
   const renderItem = ({ item }) => {
     return (
-      <Item item={item} setForm={setForm} form={form} onPress={() => item.id} />
+      <Item
+        item={item}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+        setForm={setForm}
+        form={form}
+        onPress={() => item.id}
+      />
     );
   };
 
@@ -95,6 +103,7 @@ const RecordEditor = () => {
       data={form}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
+      extraData={{ selectedId, setSelectedId, setForm }}
       ListFooterComponent={() => (
         <Button icon="plus" mode="text" onPressIn={handleAddItem}>
           Agregar item

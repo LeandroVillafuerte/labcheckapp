@@ -5,6 +5,7 @@ import Checklist from "../screens/Checklist";
 import RecordDetails from "../screens/RecordDetails";
 import RecordEditor from "../screens/RecordEditor";
 import UsersAdmin from "../screens/UsersAdmin";
+import Register from "../screens/Register";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,11 @@ export default function HomeNavigation() {
         name="Record sheet editor"
         component={RecordEditor}
         options={{ title: "Editar hoja de registro" }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{ title: "Editar usuario" }}
       />
     </Stack.Navigator>
   );

@@ -27,6 +27,7 @@ export default function Navigation() {
                 <Icon name="clipboard-list" color={color} size={size} />
               ),
               headerRight: menuButton,
+              headerShown: false,
             }}
           />
           <Tab.Screen

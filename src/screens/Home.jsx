@@ -4,9 +4,11 @@ import React from "react";
 import RecordList from "../components/RecordList";
 import { useNavigation } from "@react-navigation/native";
 import colors from "../utils/constants/colors";
+import useWithHeader from "../hooks/useWithHeader.js";
 
 const Home = () => {
   const navigation = useNavigation();
+  useWithHeader();
   return (
     <SafeAreaView>
       <RecordList />

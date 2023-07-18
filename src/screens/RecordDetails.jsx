@@ -1,7 +1,6 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useCallback } from "react";
 import { Avatar, Button, Card, Divider, Text } from "react-native-paper";
-import useWithoutHeader from "../hooks/useWithoutHeader";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import record from "../utils/mockups/record";
 import colors from "../utils/constants/colors";
@@ -14,7 +13,6 @@ const RecordDetails = (props) => {
     },
   } = props;
   navigation.setOptions({ title: `Registro #${record.id}` });
-  useWithoutHeader();
   return (
     <ScrollView>
       <Card style={styles.card} elevation={3}>

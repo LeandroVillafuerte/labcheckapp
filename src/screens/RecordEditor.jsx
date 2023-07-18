@@ -1,7 +1,6 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useRef } from "react";
 import { Text, TextInput, Button, IconButton } from "react-native-paper";
-import useWithoutHeader from "../hooks/useWithoutHeader";
 import { formItems } from "../utils/mockups/form";
 import colors from "../utils/constants/colors";
 
@@ -72,7 +71,6 @@ const RenderItem = ({ item, selectedId, setSelectedId, setForm, form }) => {
 };
 
 const RecordEditor = () => {
-  useWithoutHeader();
   const [form, setForm] = useState(formItems);
   const [selectedId, setSelectedId] = useState(null);
   const scrollViewRef = useRef(null);

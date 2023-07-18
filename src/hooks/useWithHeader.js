@@ -1,16 +1,16 @@
 import React, { useCallback } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
-const useWithoutHeader = () => {
+const useWithHeader = () => {
   const navigation = useNavigation();
   return useFocusEffect(
     useCallback(() => {
-      navigation.getParent().setOptions({ headerShown: false });
+      navigation.getParent().setOptions({ headerShown: true });
       return () => {
-        navigation.getParent().setOptions({ headerShown: true });
+        navigation.getParent().setOptions({ headerShown: false });
       };
     }, [])
   );
 };
 
-export default useWithoutHeader;
+export default useWithHeader;

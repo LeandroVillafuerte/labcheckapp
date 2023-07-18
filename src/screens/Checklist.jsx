@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
 import { RadioButton, Text, Button, TextInput } from "react-native-paper";
 import { formItems } from "../utils/mockups/form.js";
-import useWithoutHeader from "../hooks/useWithoutHeader.js";
 import useAuth from "../hooks/useAuth.js";
 import colors from "../utils/constants/colors.js";
 
 const Checklist = () => {
   const { auth } = useAuth();
   const [form, setForm] = useState(formItems);
-  useWithoutHeader();
   const handlePress = (indexItem, indexOption) => {
     setForm((prevForm) =>
       prevForm.map((item, index) => {

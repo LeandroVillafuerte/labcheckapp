@@ -1,12 +1,11 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import React, { useState } from "react";
-import useWithoutHeader from "../hooks/useWithoutHeader";
 import users from "../utils/mockups/users.js";
 import { Text, IconButton, Switch } from "react-native-paper";
 import colors from "../utils/constants/colors";
+import { useNavigation } from "@react-navigation/native";
 
 const UsersAdmin = () => {
-  useWithoutHeader();
   return (
     <>
       <View style={styles.formHeader}>
@@ -26,11 +25,16 @@ const UsersAdmin = () => {
 const RenderItem = ({ user }) => {
   const [isSwitchOn, setIsSwitchOn] = useState(user.enabled);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const navigation = useNavigation();
 
   return (
     <View style={styles.itemsContainer}>
       <Text style={{ flex: 2 }}>{user.name}</Text>
-      <IconButton style={{ flex: 1, padding: 0, margin: 0 }} icon={"pencil"} />
+      <IconButton
+        style={{ flex: 1, padding: 0, margin: 0 }}
+        icon={"pencil"}
+        onPress={() => navigation.navigate("Register")}
+      />
       <Switch
         style={{ flex: 1, marginRight: 20 }}
         value={isSwitchOn}

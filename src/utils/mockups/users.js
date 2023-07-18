@@ -1,0 +1,51 @@
+export default [
+  {
+    id: "1",
+    name: "Keegan Whitfield",
+    time: "28 May, 2023",
+    email: "donec.est@hotmail.org",
+    enabled: true,
+  },
+  {
+    id: "2",
+    name: "Calvin Dixon",
+    time: "6 May, 2023",
+    email: "lectus.sit.amet@hotmail.couk",
+    enabled: true,
+  },
+  {
+    id: "3",
+    name: "Jillian Day",
+    time: "15 May, 2023",
+    email: "eu.lacus@icloud.edu",
+    enabled: false,
+  },
+  {
+    id: "4",
+    name: "Howard Stanley",
+    time: "12 May, 2023",
+    email: "non.quam@hotmail.org",
+    enabled: false,
+  },
+  {
+    id: "5",
+    name: "Cherokee Watson",
+    time: "26 May, 2023",
+    email: "id@hotmail.ca",
+    enabled: true,
+  },
+  {
+    id: "6",
+    name: "Zoe Hurley",
+    time: "29 May, 2023",
+    email: "etiam.gravida.molestie@outlook.com",
+    enabled: true,
+  },
+  {
+    id: "7",
+    name: "Holmes Langley",
+    time: "20 May, 2023",
+    email: "mus.donec@protonmail.org",
+    enabled: true,
+  },
+];

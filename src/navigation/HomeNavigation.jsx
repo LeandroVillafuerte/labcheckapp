@@ -6,16 +6,21 @@ import RecordDetails from "../screens/RecordDetails";
 import RecordEditor from "../screens/RecordEditor";
 import UsersAdmin from "../screens/UsersAdmin";
 import Register from "../screens/Register";
+import menuButton from "../components/menuButton";
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeNavigation() {
   return (
-    <Stack.Navigator options={{ headerShown: false }}>
+    <Stack.Navigator>
       <Stack.Screen
         name="Latest records"
         component={HomeScreen}
-        options={{ title: "", headerShown: false }}
+        options={{
+          title: "Registros",
+          headerRight: menuButton,
+          headerShown: true,
+        }}
       />
       <Stack.Screen
         name="New Record"

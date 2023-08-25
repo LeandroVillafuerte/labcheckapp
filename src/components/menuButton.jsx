@@ -17,11 +17,17 @@ const menuButton = () => {
       anchor={<IconButton icon="menu" size={30} onPress={openMenu} />}
     >
       <Menu.Item
-        onPress={() => navigation.navigate("Record sheet editor")}
+        onPress={() => {
+          navigation.navigate("Record sheet editor");
+          closeMenu();
+        }}
         title="Editar formulario"
       />
       <Menu.Item
-        onPress={() => navigation.navigate("Users")}
+        onPress={() => {
+          navigation.navigate("Users");
+          closeMenu();
+        }}
         title="Gestionar usuarios"
       />
     </Menu>

@@ -1,10 +1,5 @@
-import {
-  FlatList,
-  Text,
-  ActivityIndicator,
-  StyleSheet,
-  View,
-} from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
 import React from "react";
 import records from "../utils/mockups/records.js";
 import ItemRecordList from "./ItemRecordList.jsx";
@@ -12,59 +7,68 @@ import colors from "../utils/constants/colors.js";
 
 const RecordList = () => {
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.listHeader}>
-        <Text style={styles.textHeaderId}>No</Text>
-        <Text style={styles.textHeaderDate}>Fecha</Text>
-        <Text style={styles.textHeaderName}>Nombre</Text>
+        <Text style={styles.headerId}>No</Text>
+        <Text style={styles.headerDate}>Fecha</Text>
+        <Text style={styles.headerName}>Responsable</Text>
       </View>
+
       <FlatList
         data={records}
-        // numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ItemRecordList item={item} />}
-        contentContainerStyle={styles.flatListContentContainer}
-        //   onEndReached={isNext && laodMore}
-        //   onEndReachedThreshold={0.1}
-        // ListFooterComponent={
-        //   //   isNext && (
-        //   <ActivityIndicator
-        //     size="large"
-        //     // style={styles.spinner}
-        //     color="#AEAEAE"
-        //   />
-        //   //   )
-        // }
+        contentContainerStyle={styles.listContent}
       />
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  flatListContentContainer: {
-    top: 20,
-    paddingBottom: 70,
+  container: {
+    flex: 1,
   },
   listHeader: {
     flexDirection: "row",
-    backgroundColor: colors.medium_2_color,
-    paddingHorizontal: 30,
-    height: 30,
     alignItems: "center",
-    borderBottomWidth: 1,
+    marginHorizontal: 18,
+    marginBottom: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 18,
+    backgroundColor: colors.surface_2,
+    borderWidth: 1,
+    borderColor: colors.border_soft,
   },
-  textHeaderId: {
+  headerId: {
     flex: 1,
-    fontWeight: "bold",
+    color: colors.text_muted,
+    fontSize: 12,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
   },
-  textHeaderDate: {
+  headerDate: {
     flex: 2,
-    fontWeight: "bold",
+    color: colors.text_muted,
+    fontSize: 12,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
   },
-  textHeaderName: {
+  headerName: {
     flex: 3,
-    fontWeight: "bold",
+    color: colors.text_muted,
+    fontSize: 12,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
+  },
+  listContent: {
+    paddingHorizontal: 18,
+    paddingBottom: 96,
+    gap: 12,
   },
 });
 

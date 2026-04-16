@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigation from "./HomeNavigation";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import { FontAwesome5 as Icon } from "@expo/vector-icons";
 import AccountNavigation from "./AccountNavigation";
 import useAuth from "../hooks/useAuth";
 import Login from "../screens/Login";

@@ -1,7 +1,7 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useCallback } from "react";
 import { Avatar, Button, Card, Divider, Text } from "react-native-paper";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import { FontAwesome5 as Icon } from "@expo/vector-icons";
 import record from "../utils/mockups/record";
 import colors from "../utils/constants/colors";
 

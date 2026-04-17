@@ -1,6 +1,7 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Avatar, Button, Card, Text } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 import useAuth from "../hooks/useAuth.js";
 import colors from "../utils/constants/colors";
 

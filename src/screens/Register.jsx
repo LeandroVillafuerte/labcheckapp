@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Button, SegmentedButtons, Text, TextInput } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../utils/constants/colors";
 
 const Register = () => {

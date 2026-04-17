@@ -1,6 +1,7 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { FAB, Text } from "react-native-paper";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import RecordList from "../components/RecordList";
 import { useNavigation } from "@react-navigation/native";
 import colors from "../utils/constants/colors";

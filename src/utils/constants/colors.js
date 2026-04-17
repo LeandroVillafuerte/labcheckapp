@@ -1,6 +1,6 @@
 export default {
   bg_1_color: "#303030",
-  bg_2_color: "#330033",
+  bg_2_color: "#263133",
   bg_3_color: "rgb(29, 43, 44)",
   medium_1_color: "#51ABB2",
   medium_2_color: "#795833",

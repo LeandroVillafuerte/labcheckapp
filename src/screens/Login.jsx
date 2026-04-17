@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
   StyleSheet,
   View,
 } from "react-native";
 import { Button, HelperText, Text, TextInput } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { user, userDetails } from "../utils/mockups/user";
